@@ -43,10 +43,17 @@ interface IForecast {
 interface IForecastday {
   day: IDay;
   date: string;
+  astro:IAstro
 }
 
 interface IDay {
   condition: ICondition;
+  maxtemp_c: number
+}
+
+interface IAstro{
+  sunrise:number
+  sunset: number
 }
 
 export default function Weather() {
@@ -230,7 +237,7 @@ export default function Weather() {
     },
     "& .item1 .status .status-i:hover": {
       background: "#03131A",
-      animation: `${bounce} 2s ease infinite`,
+      animation: `${bounce} 2s ease`,
     },
     "& .item2 h2": {
       textAlign: "center",
@@ -248,7 +255,7 @@ export default function Weather() {
     },
     "& .item2 .forecast:hover": {
       border: "1px solid #1a4651",
-      animation: `${bounce} 4s ease infinite`,
+      animation: `${bounce} 4s ease`,
       background: "#03131A",
     },
     "& .item2 .forecast .for-img": {

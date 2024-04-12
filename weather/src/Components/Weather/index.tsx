@@ -20,15 +20,15 @@ interface ICurrent {
   last_updated: number;
   temp_c: number;
   wind_dir: string;
-  uv: number,
-  humidity: number,
-  pressure_in: number,
-  wind_degree: number,
-  air_quality: IAirquality
+  uv: number;
+  humidity: number;
+  pressure_in: number;
+  wind_degree: number;
+  air_quality: IAirquality;
 }
 
 interface IAirquality {
-  pm10: number
+  pm10: number;
 }
 
 interface ICondition {
@@ -37,7 +37,7 @@ interface ICondition {
 }
 
 interface IForecast {
-  forecastday: IForecastday;
+  forecastday: IForecastday[];
 }
 
 interface IForecastday {
@@ -55,12 +55,10 @@ export default function Weather() {
   const [searchTerm, setSearchTerm] = useState("uyo");
 
   useEffect(() => {
-    const url =
-      "http://api.weatherapi.com/v1/forecast.json?key=02056759d8aa4cee897105756241004&days=4&aqi=yes&alerts=no";
+    const baseURL = `http://api.weatherapi.com/v1/forecast.json?key=02056759d8aa4cee897105756241004&days=4&aqi=yes&alerts=no&q=${
+      searchTerm ? searchTerm : ""
+    }`;
 
-    const searchParam = searchTerm ? `&q=${searchTerm}` : "";
-
-    const baseURL = url + searchParam;
     axios
       .get(baseURL)
       .then((res) => {
@@ -79,7 +77,7 @@ export default function Weather() {
     { name: "uv", link: info.current.uv },
     { name: "wind dir", link: info.current.wind_dir },
     { name: "humidity", link: info.current.humidity },
-    { name: "pressure", link: info.current.pressure_in},
+    { name: "pressure", link: info.current.pressure_in },
     { name: "wind deg", link: info.current.wind_degree },
     { name: "air quality", link: info.current.air_quality.pm10 },
   ];
@@ -219,18 +217,18 @@ export default function Weather() {
     "& .item1 .status": {
       background: "#1a4651",
       borderRadius: "5px",
-      display:"flex",
+      display: "flex",
       flexWrap: "wrap",
-      margin: "20px"
+      margin: "20px",
     },
-    "& .item1 .status .status-i":{
+    "& .item1 .status .status-i": {
       flexGrow: "1",
       display: "flex",
       justifyContent: "center",
       textAlign: "center",
-      padding:"20px",
-    } ,
-    "& .item1 .status .status-i:hover":{
+      padding: "20px",
+    },
+    "& .item1 .status .status-i:hover": {
       background: "#03131A",
       animation: `${bounce} 2s ease infinite`,
     },
@@ -251,7 +249,7 @@ export default function Weather() {
     "& .item2 .forecast:hover": {
       border: "1px solid #1a4651",
       animation: `${bounce} 4s ease infinite`,
-      background:"#03131A"
+      background: "#03131A",
     },
     "& .item2 .forecast .for-img": {
       flexGrow: "1",
@@ -284,6 +282,7 @@ export default function Weather() {
           <form
             role="search"
             onSubmit={(e) => {
+              console.log(e, "eefffooorrrmmm");
               e.preventDefault();
               setSearchTerm(e.target.search.value);
             }}
@@ -326,8 +325,9 @@ export default function Weather() {
           {currentInfo.map((item, id) => (
             <div className="status-i" key={id}>
               <div>
-              <h2>{item.link}</h2>
-              <p>{item.name}</p></div>
+                <h2>{item.link}</h2>
+                <p>{item.name}</p>
+              </div>
             </div>
           ))}
         </div>

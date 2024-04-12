@@ -352,7 +352,7 @@ export default function Weather() {
                 <div>
                   <div>
                     <p>
-                      <bold>DATE:</bold> {item.date}
+                      <b>DATE:</b> {item.date}
                     </p>
                   </div>
                   <div>

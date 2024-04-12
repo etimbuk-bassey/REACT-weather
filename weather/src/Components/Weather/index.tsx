@@ -81,12 +81,12 @@ export default function Weather() {
   console.log(searchTerm, "searchTerm");
 
   const currentInfo = [
-    { name: "uv", link: info.current.uv },
-    { name: "wind dir", link: info.current.wind_dir },
-    { name: "humidity", link: info.current.humidity },
-    { name: "pressure", link: info.current.pressure_in },
-    { name: "wind deg", link: info.current.wind_degree },
-    { name: "air quality", link: info.current.air_quality.pm10 },
+    { name: "uv", link: info.current.uv, unit:""},
+    { name: "wind dir", link: info.current.wind_dir,unit:"" },
+    { name: "humidity", link: info.current.humidity,unit:"" },
+    { name: "pressure", link: info.current.pressure_in, unit:" kpa" },
+    { name: "wind deg", link: info.current.wind_degree, unit:"°" },
+    { name: "air quality", link: info.current.air_quality.pm10, unit:"%" },
   ];
 
   const bounce = keyframes`
@@ -212,11 +212,14 @@ export default function Weather() {
       color: "#8FD6E8",
     },
     "& .item1 .current .current-info .country": {
-      display: "inline-block",
+      // display: "inline-block",
+      // marginLeft: "100px",
       background: "#1a4651",
       padding: "5px 10px",
       borderRadius: "5px",
-      margin: " 4px 0",
+      border: "1px solid #D4FF9D",
+      color: "#D4FF9D"
+      // margin: " 4px 0",
     },
     "& .item1 .current .current-info .country p": {
       margin: "0px",
@@ -332,7 +335,7 @@ export default function Weather() {
           {currentInfo.map((item, id) => (
             <div className="status-i" key={id}>
               <div>
-                <h2>{item.link}</h2>
+                <h2>{item.link}{item.unit}</h2>
                 <p>{item.name}</p>
               </div>
             </div>

@@ -212,14 +212,11 @@ export default function Weather() {
       color: "#8FD6E8",
     },
     "& .item1 .current .current-info .country": {
-      // display: "inline-block",
-      // marginLeft: "100px",
       background: "#1a4651",
       padding: "5px 10px",
-      borderRadius: "5px",
+      borderRadius: "3px",
       border: "1px solid #D4FF9D",
       color: "#D4FF9D"
-      // margin: " 4px 0",
     },
     "& .item1 .current .current-info .country p": {
       margin: "0px",
@@ -292,7 +289,6 @@ export default function Weather() {
           <form
             role="search"
             onSubmit={(e) => {
-              console.log(e, "eefffooorrrmmm");
               e.preventDefault();
               setSearchTerm(e.target.search.value);
             }}

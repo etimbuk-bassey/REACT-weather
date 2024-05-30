@@ -77,8 +77,8 @@ export default function Weather() {
   }, [searchTerm]);
   if (error) return `Error: ${error}`;
   if (!info) return null;
-  console.log(info, "info");
-  console.log(searchTerm, "searchTerm");
+  // console.log(info, "info");
+  // console.log(searchTerm, "searchTerm");
 
   const currentInfo = [
     { name: "uv", link: info.current.uv, unit:""},

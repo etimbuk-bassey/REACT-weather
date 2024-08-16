@@ -4,6 +4,7 @@
 import ChatBot from 'react-chatbotify'
 import './App.css'
 import Weather from './Components/Weather'
+import Test from './Components/button'
 
 function App() {
   
@@ -17,7 +18,8 @@ function App() {
   return (
     <>
       <ChatBot flow={flow}/>
-      <Weather />
+      {/* <Weather /> */}
+      <Test />
     </>
   )
 }

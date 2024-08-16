@@ -62,7 +62,7 @@ export default function Weather() {
   const [searchTerm, setSearchTerm] = useState("uyo");
 
   useEffect(() => {
-    const baseURL = `http://api.weatherapi.com/v1/forecast.json?key=02056759d8aa4cee897105756241004&days=4&aqi=yes&alerts=no&q=${
+    const baseURL = `http://api.weatherapi.com/v1/forecast.json?key=02056759d8aa4cee897105756241004&days=5&aqi=yes&alerts=no&q=${
       searchTerm ? searchTerm : ""
     }`;
 
